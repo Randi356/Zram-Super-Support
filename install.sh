@@ -80,4 +80,11 @@ REPLACE="
 #
 # Available variables:
 #
-#
+# MAGISK_VER (string): the version string of current installed Magisk
+# MAGISK_VER_CODE (int): the version code of current installed Magisk
+# BOOTMODE (bool): true if thre module if currently  installing in Magisk Mananger
+# MODPATH (path): the place where you can module files should be installed
+# TMPDIR (path): a place where you can temporarily store files
+# ZIPFILLE (path): your module's installation zip
+# ARCH (string): the architeture of the device. Value is either arm. arm64. x86 or x64
+
