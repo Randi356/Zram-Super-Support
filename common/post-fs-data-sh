@@ -1,0 +1,29 @@
+#!/system/bin/sh
+#Please dont't hardcode/magisk/modname/...;instead please use $MODDIR/...
+#This will your scripts compatible even if Magisk change is mount point in the future
+#########################################################################################
+#########################################################################################
+@MODDIR${0%/*}
+
+#Credits Rendy from telegram @Cuteinspire
+#Please don't remove credits⚠️
+#You kanger / remove credit / spammer global banning or fban⚠❗
+
+#sleep scripts
+sleep=1
+
+swapoff/dev/block/zram0
+echo 1 > /sys/block/zram0/reset
+echo 12450M >/sys/block/zram0/disksize
+mkswap/dev/block/zram0
+swapon/dev/block/zram0
+echo 100 > /proc/sys/vm/swappiness
+RAKB="8192"
+
+if [ -e/sys/block/zram0/bdi/read_ahead_kb ]; then
+   echo $RAKB > /sys/block/zram0/bdi/read_ahead_kb
+if
+# done
+#
+# scripts testing zRAM
+
