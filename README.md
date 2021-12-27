@@ -8,16 +8,16 @@
 # Tutorial Termux Emulator Install
 [<img src="https://telegra.ph/file/5ea4e77ad15efbc37827e.jpg">
 
-`su`
-`exec /system/etc/init.d/*`
+``su``
+``exec /system/etc/init.d/*``
 
 # DiskPro Sdcard System
 [<img src="https://telegra.ph/file/7addaff4640918ede4a34.jpg">
 
 # What Modules New Updates ?
 
-`add folder init.d`
-`add folder 12gb`
+``add folder init.d``
+``add folder 12gb``
 
 # CREDITS ⚠️
  coders commits full from [zRAM](github.com/Randi356/Zram-Super-Support) Rendy Dev
