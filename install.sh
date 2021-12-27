@@ -56,3 +56,28 @@ REPLACE_EXAMPLE="
 REPLACE="
 " 
 
+#################################
+#
+# Functions Callbacks
+#
+# the followimg functions will be called by the installation framework.
+# you do not have the ability to modify update-binary, the only way you can customize
+# installition is through implementing these fucntions. 
+#
+# whe running your callbacks, the installation framewrok will make surethe Magisk
+# internal busybox path is *PREFENDED* to PATH, so all common commadns shall exist.
+# Also, it will make sure /data, /system, and /vendor is properly mounted.
+#
+#####################
+#####################
+#
+# The installation framework will export some variables and functions. 
+# You should use these variables and functions fro installation. 
+#
+# ! DO NOT use any Magisk internal paths as those are NOT public API. 
+# ! DO NOT use other functions in util_functions.sh as they are NOT public API. 
+# !  Non public APIs are not guranteed to maintain compatibility between release.
+#
+# Available variables:
+#
+#
