@@ -131,3 +131,14 @@ done
 ui_print "- Setting permission"
 set_permission
 
+#####################################
+# Finalzing
+#####################################
+
+cd /
+imageless_magisk || unmout_magisk_img
+$BOOTMODE || recovery_cleanup
+rm -rf $TMPDIR $MOUNTPATH
+
+ui_print "- Done"
+exit 0
