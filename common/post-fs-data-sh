@@ -3,7 +3,7 @@
 #This will your scripts compatible even if Magisk change is mount point in the future
 #########################################################################################
 #########################################################################################
-@MODDIR${0%/*}
+@MODDIR=${0%/*}
 
 #Credits Rendy from telegram @Cuteinspire
 #Please don't remove credits⚠️
