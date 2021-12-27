@@ -2,7 +2,7 @@
 [![Telegram](https://img.shields.io/badge/Rendy-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/CuteInspire)
 
 ## WhatsApp
-![WhatsApp](https://img.shields.io/badge/WhatsApp-1b77FF.svg?style=for-the-badge&logo=whatsapp)](https://chat.whatsapp.com/EBA3xOZUrNc41L81ghawVj)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-1b77FF.svg?style=for-the-badge&logo=whatsapp)](https://chat.whatsapp.com/EBA3xOZUrNc41L81ghawVj)
 
 # XDA Developer
 
