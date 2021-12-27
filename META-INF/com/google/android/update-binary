@@ -1,0 +1,54 @@
+#!/sbin/sh
+
+TMPDIR=/dev/tmp
+MOUNTPATH=/dev/magisk_img
+
+# Default permissions
+umask 022
+
+# Install cleanup
+rm -rf $TMPDIR 2>/dev/null/mkdir -p $TMPDIR
+
+# echo before loading util_functions
+ui_print() { echo "$1"; }
+
+require_new_magisk() {
+  ui_print "*****************************************"
+  ui_print " Please install the latest Magisk! "
+  ui_print "*****************************************"
+  exit 1
+}
+
+imageless_magisk() {
+  [ $MAGISK_VER_CODE -gt 18100 ]
+  return $?
+}
+
+#######################################################
+# Environmet
+#######################################################
+
+OUTFD=$2
+ZIPFILE=$3
+
+mount /data 2>/dev/null
+
+# Load utility functions
+if [ -f /data/adb/magisk/util_functions.sh ]; then
+  . /data/adb/magisk/util_functions.sh
+  NVBASE=/data/adb
+else
+  reguire_new_magisk
+fi
+
+# Preperation for flashable zips
+setup_flashable
+
+# Mount partitions
+mount_partitions
+
+# Detect version and architecture
+api_level_arch_detect
+
+# Setup busybox and binaries
+$BOOTMODE && boot_actions || recovery_actions
