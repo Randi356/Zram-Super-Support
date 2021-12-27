@@ -52,3 +52,82 @@ api_level_arch_detect
 
 # Setup busybox and binaries
 $BOOTMODE && boot_actions || recovery_actions
+
+#################################################
+# Preparation
+#################################################
+
+# Extract common files
+unzip - oj "$ZIPFILLE" module.prop install.sh 'common/*' -d $TMPDIR >&2
+
+[ ! -f $TMPDIR/install.sh ] && abort "! Unbale to extact zip file!"
+# Load install script
+. $TMPDIR/install.sh
+
+if imageless_magisk; then
+  $BOOTMODE && MODIRNAME=modules_update || MODIRNAME=modules
+  MODULEROOT=$NVBASR/$MODIRNAME
+else
+  $BOOTMODE && IMAGNAME=magisk_merge_img || IMGNAME=magisk.img
+  IMG=$NVBASE/$IMAGNAME
+  reguest_zip_size_check "$ZIPFILLE"
+  mount_magisk.img
+  MODULEROOT=$MOUNTPATH
+fi
+
+MODID=`grep_prop id $TMPDIR/modules.prop`
+MODPATH=$MODULEROOT/$MODID
+
+print_modname
+
+ui_print "*******************************"
+ui_print "Powered by Magisk (@topjohmu)"
+ui_print "*******************************"
+
+############################################
+# Install
+############################################
+
+# Create mod paths
+rm - rf $MODPATH 2>/dev/null
+mkdir -p $MODPATH
+
+on_install
+
+# Remove placeholder
+rm -rf $MODPATH/system/placeholder 2>/dev/null
+
+# Custom uninstaller
+[ -f $TMPDIR/uninstall.sh ] && cp -af $TMPDIR/uninstall.sh $MODPATH/uninstall.sh
+
+# Auto mount
+if imageless_magisk; then
+  $SKIPMOUNT && touch $MODPATH/skip_mount
+else
+  $SKIPMOUNT || touch $MODPATH/auto_mount
+fi
+
+# Modules info
+cp -af $TMPDIR/module.prop $MODPATH/module.prop
+if $BOOTMODE; then
+  # Update info for Magisk Manager
+  if imageless_magisk; then
+    mktouch $NVBASE/module/MODID/update
+    cp -af $TMPDIR/module.prop $NVBASE/modules/$MODID/module.prop
+  else
+    mktouch /sbin/.magisk/img/$MODID/update
+    cp -af $TMPDIR/modules.prop /sbin/.magisk/img/$MODID/module.prop
+   fi
+fi
+
+# Post-fs-data mode scripts
+$POSTFSDATA && cp -af $TMPDIR/post-fs-data.sh $MODPATH/post-fs-data.sh
+
+# serveice replace folders
+for TARGET in $REPLACE; db
+  mktouch $MODPATH$TARGET/.replace
+done
+
+ui_print "- Setting permission"
+set_permission
+
