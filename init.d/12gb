@@ -1,0 +1,36 @@
+#!/system/bin/sh
+#
+######################
+# script made by Rendy
+# Credits @CuteInspire from telegram
+# please dont't remove credits⚠️
+######################
+#swap off first
+swapoff /dev/block/zram0
+#
+# resetting zram
+echo 1 > /sys/block/zram0/reset
+#
+# setting zram size to 12 GB
+echo 12450M > /sys/block/zram0/disksize
+#
+# making zram swapable
+mkswap /dev/block/zram0
+#
+# starting swap on zram
+swapon /dev/block/zram0
+#
+# setting low memory killer parameters according to total memory
+echo "256,10240,32000,34000,36000,38000" > /sys/module/lowmemorykiller/parameters/minfree
+#
+# setting swappiness to 100
+echo 100 > /proc/sys/vm/swappiness
+#
+# done
+#
+######################
+# script made by Rendy
+######################
+free
+
+cat /sys/module/lowmemorykiller/parameters/minfree
