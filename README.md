@@ -33,5 +33,14 @@ add folder init.d
 add folder 12gb
 ```
 
+## DOWNLOAD LINK
+[![Semawur](https://img.shields.io/badge/Semawur-1b77FF.svg?style=for-the-badge&logo=semawur)](https://cararegistrasi.com/AFazs)
+
+# MAGISK VERSION UPDATE
+
+[![Magisk](https://img.shields.io/badge/Magisk-3DDC84?style=for-the-badge&logo=magisk&logoColor=white)](https://magiskmanager.com/)
+
+
+
 # CREDITS ⚠️
  coders commits full from [zRAM](github.com/Randi356/Zram-Super-Support) Rendy Dev
