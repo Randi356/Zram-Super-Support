@@ -2,7 +2,7 @@
 #
 ######################
 # script made by Rendy
-# Credits @CuteInspire from telegram
+# Credits @rencprx from telegram
 # please dont't remove credits⚠️
 ######################
 #swap off first
@@ -12,7 +12,7 @@ swapoff /dev/block/zram0
 echo 1 > /sys/block/zram0/reset
 #
 # setting zram size to 12 GB
-echo 12450M > /sys/block/zram0/disksize
+echo 13450M > /sys/block/zram0/disksize
 #
 # making zram swapable
 mkswap /dev/block/zram0
