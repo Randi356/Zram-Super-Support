@@ -5,16 +5,16 @@
 #########################################################################################
 @MODDIR=${0%/*}
 
-#Credits Rendy from telegram @Cuteinspire
-#Please don't remove credits⚠️
-#You kanger / remove credit / spammer global banning or fban⚠❗
+# Credits Rendy from telegram @rencprx
+# Please don't remove credits⚠️
+# You kanger / remove credit / spammer global banning or fban⚠❗
 
 #sleep scripts
 sleep=1
 
 swapoff/dev/block/zram0
 echo 1 > /sys/block/zram0/reset
-echo 12450M >/sys/block/zram0/disksize
+echo 13450M >/sys/block/zram0/disksize
 mkswap/dev/block/zram0
 swapon/dev/block/zram0
 echo 100 > /proc/sys/vm/swappiness
